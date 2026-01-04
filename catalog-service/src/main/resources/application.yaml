@@ -1,0 +1,20 @@
+server:
+  port: 7071
+  shutdown: graceful #wait to complete process
+
+spring:
+  application:
+    name: catalog-service
+  datasource:
+    url: 'jdbc:mysql://localhost:3307/test?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC'
+    username: root
+    password: mysql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+
+
+
