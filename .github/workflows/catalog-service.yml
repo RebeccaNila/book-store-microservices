@@ -1,6 +1,7 @@
 name: Catalog Service
 
 on:
+  workflow_dispatch: # Allows manual triggering
   push:
     paths:
       - catalog-service/** #when we change code inside this folder then only it will trigger
