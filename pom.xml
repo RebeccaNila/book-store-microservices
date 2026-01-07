@@ -14,6 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>catalog-service</module>
+        <module>order-service</module>
     </modules>
 
     <properties>
