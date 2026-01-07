@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
-//@EnableAutoConfiguration(ApplicationProperties.class)
+// @EnableAutoConfiguration(ApplicationProperties.class)
 @ConfigurationPropertiesScan // automatically scan the root package for ConfigurationProperties class annotation
 public class CatalogServiceApplication {
 

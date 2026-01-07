@@ -1,4 +1,5 @@
 package dev.nila.bookstore.catalogservice.domain;
+
 import java.util.List;
 
 public record PagedResult<T>(

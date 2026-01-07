@@ -5,7 +5,7 @@ vars:
   MVNW: '{{if eq .GOOS "windows"}}mvnw.cmd{{else}}./mvnw{{end}}' #depending on OS use command correctly
   DC_DIR: "deployment/docker-compose" #dockercomplose path
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml" #file
-#  APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
+  APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
 #  MONITORING_DC_FILE: "{{.DC_DIR}}/monitoring.yml"
 #  SLEEP_CMD: '{{if eq .GOOS "windows"}}timeout{{else}}sleep{{end}}'
 
@@ -24,7 +24,7 @@ tasks:
 
   build:
     cmds:
-#      - "{{.MVNW}} -pl catalog-service spring-boot:build-image -DskipTests"
+      - "{{.MVNW}} -pl catalog-service spring-boot:build-image -DskipTests"
 #      - "{{.MVNW}} -pl order-service spring-boot:build-image -DskipTests"
 #      - "{{.MVNW}} -pl notification-service spring-boot:build-image -DskipTests"
 #      - "{{.MVNW}} -pl api-gateway spring-boot:build-image -DskipTests"
@@ -60,7 +60,7 @@ tasks:
       - task: stop_monitoring
       - task: sleep
       - task: start_monitoring
-
+#whenever call start first build it
   start:
     deps: [build]
     cmds:

@@ -1,14 +1,13 @@
 package dev.nila.bookstore.catalogservice.web.exception;
 
 import dev.nila.bookstore.catalogservice.domain.ProductNotFoundException;
+import java.net.URI;
+import java.time.Instant;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import java.net.URI;
-import java.time.Instant;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -35,7 +34,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         problemDetail.setTitle("Product Not Found");
         problemDetail.setType(NOT_FOUND_TYPE);
         problemDetail.setProperty("service", SERVICE_NAME);
-        //can set error category, security exception or else
+        // can set error category, security exception or else
         problemDetail.setProperty("error_category", "Generic");
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;

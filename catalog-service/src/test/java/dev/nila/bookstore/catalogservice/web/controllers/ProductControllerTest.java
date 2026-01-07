@@ -1,19 +1,17 @@
 package dev.nila.bookstore.catalogservice.web.controllers;
 
-import dev.nila.bookstore.catalogservice.AbstractIT;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
+import dev.nila.bookstore.catalogservice.AbstractIT;
+import dev.nila.bookstore.catalogservice.domain.Product;
 import io.restassured.http.ContentType;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.context.jdbc.Sql;
 
-import dev.nila.bookstore.catalogservice.domain.Product;
-
-//@Sql("/test-data.sql") // will run this query before @Test method runs
+// @Sql("/test-data.sql") // will run this query before @Test method runs
 public class ProductControllerTest extends AbstractIT {
 
     @Test
