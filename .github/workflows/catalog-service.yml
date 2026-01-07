@@ -6,9 +6,9 @@ on:
     paths:
       - catalog-service/** #when we change code inside this folder then only it will trigger
     branches:
-      - 'main'
+      - 'master'
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build:
@@ -35,15 +35,21 @@ jobs:
 
       - name: Build with Maven
         run: ./mvnw -ntp verify
-#only branch image code commit will do
-      - if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Debug Branch Info
+        run: |
+          echo "github.ref = ${{ github.ref }}"
+          echo "github.ref_name = ${{ github.ref_name }}"
+          echo "github.event_name = ${{ github.event_name }}"
+
+      - if: ${{ github.ref == 'refs/heads/master' }} #only branch image code commit will do
         name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - if: ${{ github.ref == 'refs/heads/main' }}
+      - if: ${{ github.ref == 'refs/heads/master' }}
         name: Build and Publish Docker Image
         run: |
           ./mvnw spring-boot:build-image -DskipTests
