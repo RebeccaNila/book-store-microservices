@@ -8,7 +8,7 @@ A cloud-native, event-driven microservices architecture representing a complete 
 
 The system is designed around a **Microservices Architecture** using **Spring Cloud Gateway** as the entry point and **RabbitMQ** for asynchronous communication between services.
 
-![System Architecture](bookstore-spring-microservices.jpg)
+![System Architecture](/docs/bookstore-spring-microservices.png)
 
 ## 🚀 Key Features & Patterns
 
