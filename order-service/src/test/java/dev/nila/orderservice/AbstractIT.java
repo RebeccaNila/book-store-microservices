@@ -5,6 +5,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import io.restassured.RestAssured;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.wiremock.integrations.testcontainers.WireMockContainer;
-
-import java.math.BigDecimal;
 
 // @WebMvcTest // web layer component testing
 // @DataJpaTest // repository component testing
@@ -33,14 +32,14 @@ public abstract class AbstractIT {
     @BeforeAll
     static void beforeAll() {
         wiremockServer.start();
-        //setting default wiremock sever and port name
+        // setting default wiremock sever and port name
         configureFor(wiremockServer.getHost(), wiremockServer.getPort());
     }
-    //we override the properties microservices url with wiremock url
-    //When we call order service to catalog service we use wiremock for mock instead of actual result
-    //for testing it will talk to mock server url not actual service url
+    // we override the properties microservices url with wiremock url
+    // When we call order service to catalog service we use wiremock for mock instead of actual result
+    // for testing it will talk to mock server url not actual service url
     @DynamicPropertySource
-    static void configureProperties(DynamicPropertyRegistry registry){
+    static void configureProperties(DynamicPropertyRegistry registry) {
         registry.add("orders.catalog-service-url", wiremockServer::getBaseUrl);
     }
 
@@ -48,7 +47,7 @@ public abstract class AbstractIT {
     void setUp() {
         RestAssured.port = port;
     }
-    //set up the stub to make call to this wiremock server like path url, expectation response
+    // set up the stub to make call to this wiremock server like path url, expectation response
     protected static void mockGetProductByCode(String code, String name, BigDecimal price) {
         stubFor(WireMock.get(urlMatching("/api/products/" + code))
                 .willReturn(aResponse()

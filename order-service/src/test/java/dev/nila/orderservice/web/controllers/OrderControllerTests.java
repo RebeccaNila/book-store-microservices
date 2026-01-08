@@ -6,11 +6,10 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import dev.nila.orderservice.AbstractIT;
 import dev.nila.orderservice.testdata.TestDataFactory;
 import io.restassured.http.ContentType;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-
-import java.math.BigDecimal;
 
 public class OrderControllerTests extends AbstractIT {
 
@@ -18,8 +17,8 @@ public class OrderControllerTests extends AbstractIT {
     class CreateOrderTests {
         @Test
         void shouldCreateOrderSuccessfully() {
-            //instead of actual call to catalog server, mock get product with expected response
-           mockGetProductByCode("P100", "Product 1", new BigDecimal("25.50"));
+            // instead of actual call to catalog server, mock get product with expected response
+            mockGetProductByCode("P100", "Product 1", new BigDecimal("25.50"));
             var payload =
                     """
                         {
