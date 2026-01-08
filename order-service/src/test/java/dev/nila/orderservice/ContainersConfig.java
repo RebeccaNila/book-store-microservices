@@ -10,6 +10,7 @@ import org.testcontainers.utility.DockerImageName;
 // import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 @TestConfiguration(proxyBeanMethods = false)
+// containers configuration for test
 public class ContainersConfig {
 
     static String KEYCLOAK_IMAGE = "quay.io/keycloak/keycloak:26.3.0";

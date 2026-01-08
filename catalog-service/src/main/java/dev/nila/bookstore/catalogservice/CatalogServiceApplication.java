@@ -12,6 +12,5 @@ public class CatalogServiceApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(CatalogServiceApplication.class, args);
-        System.out.println("It's running");
     }
 }
