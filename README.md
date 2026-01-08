@@ -63,3 +63,43 @@ class OrderIntegrationTest {
         // This runs against a real Dockerized Postgres & RabbitMQ
     }
 }
+```
+
+## 📍 Development Roadmap
+- [x] **Catalog Service:** REST APIs and Postgres integration
+- [x] **Service Discovery:** Docker Compose setup
+- [ ] **Order Service:** RabbitMQ integration (In Progress)
+- [ ] **Security:** Keycloak integration (Pending)
+- [ ] **Observability:** Grafana/Prometheus setup (Pending)
+
+## 🔧 Getting Started
+
+### Prerequisites
+* Java 21+
+* Docker & Docker Compose
+
+### Run the Application
+You can spin up the entire infrastructure (Databases, Broker, Tracing, Apps) with a single command:
+
+```bash
+# 1. Build the microservices
+./mvnw clean package -DskipTests
+
+# 2. Start the infrastructure and services
+docker-compose up -d
+
+```
+Once running, access the applications:
+* **Web App:** [http://localhost:8080](http://localhost:8080)
+* **Keycloak Console:** [http://localhost:9090](http://localhost:9090)
+* **Grafana:** [http://localhost:3000](http://localhost:3000)
+* **RabbitMQ Dashboard:** [http://localhost:15672](http://localhost:15672)
+
+  
+## 📝 Credits & Inspiration
+This project is based on the Spring Boot Microservices Complete Tutorial by **SivaLabs**.
+I am building this project to apply my 9 years of Java experience to a modern Microservices context, focusing specifically on:
+1.  **Infrastructure as Code** with Docker & Testcontainers.
+2.  **Asynchronous Messaging** patterns with RabbitMQ.
+3.  **Modern CI/CD** practices.
+
