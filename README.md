@@ -94,11 +94,12 @@ Once running, access the applications:
 * **Keycloak Console:** [http://localhost:9090](http://localhost:9090)
 * **Grafana:** [http://localhost:3000](http://localhost:3000)
 * **RabbitMQ Dashboard:** [http://localhost:15672](http://localhost:15672)
+* **MailHog Dashboard:** [http://localhost:8025(http://localhost:8025)
 
   
 ## 📝 Credits & Inspiration
 This project is based on the Spring Boot Microservices Complete Tutorial by **SivaLabs**.
-I am building this project to apply my 9 years of Java experience to a modern Microservices context, focusing specifically on:
+I am building this project to apply my 9+ years of Java experience to a modern Microservices context, focusing specifically on:
 1.  **Infrastructure as Code** with Docker & Testcontainers.
 2.  **Asynchronous Messaging** patterns with RabbitMQ.
 3.  **Modern CI/CD** practices.
