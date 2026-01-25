@@ -4,7 +4,7 @@ on:
   #workflow_dispatch: # Allows manual triggering
   push:
     paths:
-      - catalog-service/** #when we change code inside this folder then only it will trigger
+      - notification-service/** #when we change code inside this folder then only it will trigger
     branches:
       - 'master'
   pull_request:
@@ -15,8 +15,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./catalog-service
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service
+      working-directory: ./notification-service
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-notification-service
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
@@ -53,4 +53,4 @@ jobs:
         name: Build and Publish Docker Image
         run: |
           ./mvnw spring-boot:build-image -DskipTests
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-catalog-service
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-notification-service
