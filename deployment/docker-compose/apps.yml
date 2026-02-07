@@ -91,16 +91,37 @@ services:
     labels:
       logging: "promtail"
   api-gateway:
-    image: sivaprasadreddy/bookstore-api-gateway
+    image: nilarebecca/bookstore-api-gateway
     container_name: api-gateway
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - CATALOG_SERVICE_URL=http://catalog-service:8081
-      - ORDER_SERVICE_URL=http://order-service:8082
+      - CATALOG_SERVICE_URL=http://catalog-service:7071
+      - ORDER_SERVICE_URL=http://order-service:7072
       - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
       - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
     ports:
       - "7979:7979"
+    restart: unless-stopped
+    networks:
+      - bookstore-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    labels:
+      logging: "promtail"
+
+  bookstore-webapp:
+    image:  nilarebecca/bookstore-webapp
+    container_name: bookstore-webapp
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - BOOKSTORE_API_GATEWAY_URL=http://api-gateway:7979
+      - OAUTH2_SERVER_URL=http://keycloak:9191
+      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
+    ports:
+      - "7070:7070"
     restart: unless-stopped
     networks:
       - bookstore-network

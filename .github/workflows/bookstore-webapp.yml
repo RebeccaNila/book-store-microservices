@@ -1,9 +1,9 @@
-name: API Gateway
+name: BookStore Webapp
 
 on:
   push:
     paths:
-      - api-gateway/**
+      - bookstore-webapp/**
     branches:
       - 'master'
   pull_request:
@@ -14,8 +14,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./api-gateway
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-api-gateway
+      working-directory: ./bookstore-webapp
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-webapp
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
@@ -41,14 +41,14 @@ jobs:
           echo "github.ref_name = ${{ github.ref_name }}"
           echo "github.event_name = ${{ github.event_name }}"
 
-      - if: ${{ github.ref == 'refs/heads/master' }} #only branch image code commit will do
+      - if: ${{ github.ref == 'refs/heads/master' }}
         name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - if: ${{ github.ref == 'refs/heads/master' }} #only branch image code commit will do
+      - if: ${{ github.ref == 'refs/heads/master' }}
         name: Build and Publish Docker Image
         run: |
           ./mvnw spring-boot:build-image -DskipTests
