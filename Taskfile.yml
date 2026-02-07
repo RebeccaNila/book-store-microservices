@@ -46,6 +46,21 @@ tasks:
       - task: sleep
       - task: start_infra
 
+  start_apps:
+    cmds:
+      - "docker compose -f {{.APPS_DC_FILE}} up -d"
+
+  stop_apps:
+    cmds:
+      - "docker compose -f {{.APPS_DC_FILE}} stop"
+      - "docker compose -f {{.APPS_DC_FILE}} rm -f"
+
+  restart_apps:
+    cmds:
+      - task: stop_apps
+      - task: sleep
+      - task: start_apps
+
   start_monitoring:
     cmds:
       - "docker compose -f {{.MONITORING_DC_FILE}} up -d"

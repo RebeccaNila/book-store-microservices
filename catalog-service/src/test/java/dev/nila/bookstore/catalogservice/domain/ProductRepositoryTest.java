@@ -15,7 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
             // turn of local in-memory database
             "spring.test.database.replace=none",
             // if we don't want to use you can configure the page
-            "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
+            "spring.datasource.url=jdbc:tc:postgresql:18-alpine:///db",
         })
 // if we have multi configuration, unnecessary
 // @Import(ContainersConfig.class)
