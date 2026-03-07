@@ -3,14 +3,14 @@ document.addEventListener('alpine:init', () => {
         cart: { items: [], totalAmount: 0 },
         orderForm: {
             customer: {
-                name: "Test",
-                email: "test@gmail.com",
+                name: "Nila",
+                email: "rebecca.nilarwin93@gmail.com",
                 phone: "999999999999"
             },
             deliveryAddress: {
                 addressLine1: "KPHB",
                 addressLine2: "Kukatpally",
-                city:"Hyderabad",
+                city:"Kolkata",
                 state: "TS",
                 zipCode: "500072",
                 country: "India"

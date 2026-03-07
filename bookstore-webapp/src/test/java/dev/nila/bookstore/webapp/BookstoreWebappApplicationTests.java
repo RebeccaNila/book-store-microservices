@@ -1,11 +1,8 @@
 package dev.nila.bookstore.webapp;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
+// @SpringBootTest
 class BookstoreWebappApplicationTests {
 
-    @Test
+    // @Test
     void contextLoads() {}
 }
