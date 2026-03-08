@@ -22,15 +22,15 @@ The system is designed around a **Microservices Architecture** using **Spring Cl
 
 ## 🛠 Tech Stack
 
-| Category | Technologies |
-| :--- | :--- |
-| **Core Framework** | Java 21, Spring Boot 3.x, Spring Cloud |
-| **Data & Storage** | PostgreSQL, Spring Data JPA, Flyway (Migrations) |
-| **Messaging** | RabbitMQ (Spring AMQP) |
-| **Gateway & Net** | Spring Cloud Gateway, RestClient (Declarative Interface) |
-| **Security** | Spring Security OAuth2, Keycloak |
-| **Frontend** | Thymeleaf, Alpine.js, Bootstrap (Server-Side Rendered) |
-| **Observability** | Grafana, Prometheus, Loki, Tempo, OpenTelemetry |
+| Category | Technologies                                               |
+| :--- |:-----------------------------------------------------------|
+| **Core Framework** | Java 21, Spring Boot 3.x, Spring Cloud                     |
+| **Data & Storage** | PostgreSQL, Spring Data JPA, Flyway (Migrations)           |
+| **Messaging** | RabbitMQ (Spring AMQP)                                     |
+| **Gateway & Net** | Spring Cloud Gateway, RestClient (Declarative Interface)   |
+| **Security** | Spring Security OAuth2, Keycloak                           |
+| **Frontend** | Thymeleaf, Alpine.js, Bootstrap (Server-Side Rendered)     |
+| **Observability** | Grafana, Prometheus, Loki, Tempo                           |
 | **Testing** | JUnit 5, Testcontainers, RestAssured, Awaitility, WireMock |
 
 ## 📦 Service Breakdown
@@ -68,9 +68,9 @@ class OrderIntegrationTest {
 ## 📍 Development Roadmap
 - [x] **Catalog Service:** REST APIs and Postgres integration
 - [x] **Service Discovery:** Docker Compose setup
-- [ ] **Order Service:** RabbitMQ integration (In Progress)
-- [ ] **Security:** Keycloak integration (Pending)
-- [ ] **Observability:** Grafana/Prometheus setup (Pending)
+- [x] **Order Service:** RabbitMQ integration 
+- [x] **Security:** Keycloak integration 
+- [x] **Observability:** Grafana/Prometheus setup 
 
 ## 🔧 Getting Started
 
