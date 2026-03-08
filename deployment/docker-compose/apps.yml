@@ -8,6 +8,9 @@ services:
       - DB_URL=jdbc:postgresql://catalog-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
+      - SWAGGER_API_GATEWAY_URL=http://api-gateway:7979/catalog
+      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
     ports:
       - "7071:7071"
     restart: unless-stopped
@@ -36,8 +39,8 @@ services:
       - RABBITMQ_PASSWORD=guest
       - OAUTH2_SERVER_URL=http://keycloak:9191
       - SWAGGER_API_GATEWAY_URL=http://api-gateway:7979/orders
-      #- MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
-      #- MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
+      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
     ports:
       - "7072:7072"
     restart: unless-stopped
@@ -52,6 +55,7 @@ services:
           memory: 700m
     labels:
       logging: "promtail"
+
   notification-service:
     image: nilarebecca/bookstore-notification-service
     container_name: notification-service
@@ -66,8 +70,8 @@ services:
       - RABBITMQ_PASSWORD=guest
       - MAIL_HOST=mailhog
       - MAIL_PORT=1025
-      #- MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
-      #- MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
+      - MANAGEMENT_TRACING_ENABLED=${MANAGEMENT_TRACING_ENABLED}
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://tempo:9411
     ports:
       - "7073:7073"
     restart: unless-stopped
@@ -84,6 +88,7 @@ services:
           memory: 700m
     labels:
       logging: "promtail"
+
   api-gateway:
     image: nilarebecca/bookstore-api-gateway
     container_name: api-gateway
